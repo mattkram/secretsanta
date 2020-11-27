@@ -1,6 +1,6 @@
 from random import random
 
-     
+
 class Person(object):
     """Represents a person as a simple data structure.
 
@@ -15,14 +15,14 @@ class Person(object):
     gift_recipient: Person, default=None
         The person who will be receiving a gift from this person.
     """
-    
+
     class Meta(type):
-        """The Meta-class is used to allow indexing of the Person class by name"""    
+        """The Meta-class is used to allow indexing of the Person class by name"""
         __all = []
-        
+
         def append(cls, obj):
             cls.__all.append(obj)
-            
+
         def __getitem__(cls, name):
             for o in cls.__all:
                 if o.name == name:
@@ -30,7 +30,7 @@ class Person(object):
             return None
 
     __metaclass__ = Meta
-        
+
     def __init__(self, name, email):
         Person.append(self)
         self.name = name
@@ -58,7 +58,7 @@ def assign_secret_santa(people):
     """Randomly loops through each person in people. Assign a secret santa,
     checking that a person cannot give to themselves or to their partner.
     """
-    
+
     finished = False
     while not finished:
         # Randomly sort the list of people, and designate as gift receivers
@@ -89,13 +89,11 @@ def main():
         Person('Meghan', 'meghan@gmail.com'),
         Person('Kelly', 'kelly@gmail.com'),
         Person('Marianne', 'marianne@gmail.com'),
-        Person('Dillon', 'dillon@mountain.com')
     ]
 
     # Assign partners (so they can't be each others' Santa
     Person['Matt'].partner = Person['Amanda']
     Person['Tim'].partner = Person['Meghan']
-    Person['Marianne'].partner = Person['Dillon']
 
     # Assign the secret santa randomly
     assign_secret_santa(people)
@@ -103,6 +101,6 @@ def main():
     # Print results
     for person in people:
         print person
-    
+
 if __name__ == '__main__':
     main()
