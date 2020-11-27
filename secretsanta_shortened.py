@@ -2,11 +2,11 @@ from random import random
 
 partner = {'Matt': 'Amanda',
           'Tim': 'Meghan',
-          'Kelly': None,
-          'Marianne': 'Dillon'
+          'Kelly': 'Viral',
+          'Marianne': None
          }
 
-givers = [v for t in partner.iteritems() for v in t if v is not None]
+givers = [v for t in partner.items() for v in t if v is not None]
 
 while True:
     receivers = sorted(givers, key=lambda _: random())
@@ -17,5 +17,5 @@ while True:
 
 # Print results
 for gr in zip(givers, receivers):
-    print '{0} will give to {1}'.format(*gr)
-    
+    print('{0} will give to {1}'.format(*gr))
+

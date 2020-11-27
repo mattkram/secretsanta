@@ -64,18 +64,18 @@ def assign_secret_santa(people):
         # Randomly sort the list of people, and designate as gift receivers
         # (people list is the list of givers)
         receivers = sorted(people, key=lambda _: random())
-        print 'Givers:   ', [o.name for o in people]
-        print 'Receivers:', [o.name for o in receivers]
+        print('Givers:   ', [o.name for o in people])
+        print('Receivers:', [o.name for o in receivers])
 
         finished = True
         for giver, receiver in zip(people, receivers):
             if (giver.name == receiver.name or (giver.partner is not None and giver.partner.name == receiver.name)):
-                print '{0} cannot give to {1}\n'.format(giver.name, receiver.name)
+                print('{0} cannot give to {1}\n'.format(giver.name, receiver.name))
                 finished = False
                 break
 
         if finished is True:
-            print 'Success!\n'
+            print('Success!\n')
 
     for giver, receiver in zip(people, receivers):
         giver.gift_recipient = receiver
@@ -100,7 +100,7 @@ def main():
 
     # Print results
     for person in people:
-        print person
+        print(person)
 
 if __name__ == '__main__':
     main()
